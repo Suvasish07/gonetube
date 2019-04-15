@@ -3,3 +3,22 @@
     font-weight: 600;
     margin-left: 5%;
 }
+
+.goneclass{
+    position: absolute;
+    top: 48%;
+    left: 40%;
+    color: black;
+    font-weight: 600;
+    letter-spacing: 1px;
+    
+}   
+
+
+
+  
+  @media (max-width: 768px) {
+    .logo {
+      display: none;
+    }
+  }

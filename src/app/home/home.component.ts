@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {DownloadService} from '../service/download.service';
+import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 import Swal from 'sweetalert2';
 import { DOCUMENT } from '@angular/common';
 import * as $ from 'jquery';
@@ -12,24 +13,31 @@ export class HomeComponent implements OnInit {
   videoUrl: any;
   videoUrlDetails:any;
   videoDetailsArr:any=[];
-  constructor(private downloadservice: DownloadService) { }
+  playurllink: string;
+  trustedDashboardUrl: SafeResourceUrl;
+  constructor(private downloadservice: DownloadService, private sanitizer: DomSanitizer) { 
+    this.trustedDashboardUrl = '';
+  }
 
   ngOnInit() {
   }
 
   searchVideos() {
-    // document.getElementById("loader").style.display = "block";
-    // document.getElementById("videolist").style.display = "none";
+    $('.loader').show();
+    $('.loader1').show();
+    $('.loader2').show();
+    document.getElementById("videolist").style.display = "none";
  
     this.downloadservice.searchVideosService(this.videoUrl).subscribe((data) => {
  
      this.videoUrlDetails = data;
      if (this.videoUrlDetails.status === true) {
       this.videoDetailsArr=this.videoUrlDetails.data
-      // document.getElementById("loader").style.display = "none";
-      // document.getElementById("videolist").style.display = "block";
+      $('.loader').hide();
+      $('.loader1').hide();
+      $('.loader2').hide();      document.getElementById("videolist").style.display = "block";
       $('html,body').animate({
-       scrollTop: $(".videodiv").offset().top},
+       scrollTop: $('#videolist').offset().top},
        'slow');
      } else {
       
@@ -39,6 +47,14 @@ export class HomeComponent implements OnInit {
   clearURL() {
     this.videoUrl = '';
  
+  }
+
+  playVideo(url){
+    let urlvalue = url;
+    let id = urlvalue.split('=');
+    this.playurllink = 'https://www.youtube.com/embed/' + id[1];
+    this.trustedDashboardUrl =  this.sanitizer.bypassSecurityTrustResourceUrl(this.playurllink);
+  
   }
 
 }

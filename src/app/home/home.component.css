@@ -92,9 +92,40 @@
     opacity: 1;
   }
 
+  .gradient{
+    background: linear-gradient(45deg, #00d36a 0%, #00c1ff 100%);
+
+  }
+  .modal-dialog {
+    max-width: 800px;
+    margin: 30px auto;
+}
 
 
 
+.modal-body {
+position:relative;
+padding:0px;
+}
+.close {
+position:absolute;
+right:-30px;
+top:0;
+z-index:999;
+font-size:2rem;
+font-weight: normal;
+color:#fff;
+opacity:1;
+}
+  @media (min-width: 576px){
+  .modal-dialog {
+      max-width: 600px;
+      margin: 1.75rem auto;
+  }
+
+}
+  
+  
 
 
 
