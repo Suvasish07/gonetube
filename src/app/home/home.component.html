@@ -1,0 +1,56 @@
+
+<section class="slide-wrapper">
+    <div class="container-fluid no-padding">
+            <img src="assets/img/loader.gif" alt="loader" style="display:none;margin: auto;" id="loader">
+
+	    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="fill" style="  background-image: url('assets/img/slider1.jpg');">
+                        <form method="post">
+                                <p class="titleclass">WATCH AND DOWNLOAD</p>
+                                <input type="text" class="textbox" placeholder="Enter videos link or title" name="videourl" [(ngModel)]="this.videoUrl">
+                                <input title="Search" value="" type="submit" (click)="searchVideos()" class="button">
+                        </form>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="fill" style="background-image: url('assets/img/slider2.jpg');">
+                        <form method="post">
+                                <p class="titleclass">START STREAMING NOW</p>
+                                <input type="text" class="textbox" placeholder="Enter videos link or title" name="videourl" [(ngModel)]="this.videoUrl">
+                                <input title="Search" value="" (click)="searchVideos()" type="submit" class="button">
+                        </form>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="fill" style=" background-image: url('assets/img/slider3.jpg');">
+                        <form method="post">
+                                <p class="titleclass">START STREAMING NOW</p>
+                                <input type="text" class="textbox" placeholder="Enter videos link or title" name="videourl" [(ngModel)]="this.videoUrl">
+                                <input title="Search" value="" (click)="searchVideos()" type="submit" class="button">
+                        </form>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="center slider">
+     <p>hi</p>
+  
+    
+  </section>
+
+
+       
