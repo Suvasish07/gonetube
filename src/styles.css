@@ -112,7 +112,7 @@ body {
   padding: 15px 0;
   font-weight: 300;
   color: white;
-  text-decoration: none;
+  text-decoration: none !important;
   color: white;
   transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
@@ -228,3 +228,6 @@ main h1 > a {
 .swal2-actions{
   margin: 0 !important;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -14,6 +14,8 @@ import { HashLocationStrategy, PathLocationStrategy, LocationStrategy, CommonMod
 import { HttpClientModule } from '@angular/common/http';
 import * as $ from 'jquery';
 import { OwlModule } from 'ngx-owl-carousel';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -24,10 +26,12 @@ import { OwlModule } from 'ngx-owl-carousel';
   ],
   imports: [
     BrowserModule,
+    DragDropModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    OwlModule
+    OwlModule,
+    BrowserAnimationsModule
   ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy },GlobalService, DownloadService],
   bootstrap: [AppComponent]

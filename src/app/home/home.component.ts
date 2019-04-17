@@ -55,13 +55,18 @@ export class HomeComponent implements OnInit {
     let id = urlvalue.split('=');
     this.playurllink = 'https://www.youtube.com/embed/' + id[1];
     this.trustedDashboardUrl =  this.sanitizer.bypassSecurityTrustResourceUrl(this.playurllink);
-  
+    $('.example-box').show();
+
   }
 
+  closeFunc(){
+    $('.example-box').hide();
+    this.trustedDashboardUrl=this.sanitizer.bypassSecurityTrustResourceUrl('');
+  }
 
   downloadVideo(url,i){
     this.videoUrl = '';
-   var id="#video"+i
+    var id="#video"+i
     $(id).show();
 
     this.downloadservice.downloadVideoService(url).subscribe((data) => {
