@@ -286,3 +286,12 @@ form {
 .slick-current {
   opacity: 1;
 }
+
+
+.downloaderloader{
+  display: none;
+  margin: auto;
+  position: absolute;
+  top: 0px;
+  left: 24%;
+}

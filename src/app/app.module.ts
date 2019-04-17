@@ -9,6 +9,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { DownloadService } from './service/download.service';
 import { GlobalService } from './service/global.service';
+import { HashLocationStrategy, PathLocationStrategy, LocationStrategy, CommonModule, APP_BASE_HREF } from '@angular/common';
 
 import { HttpClientModule } from '@angular/common/http';
 import * as $ from 'jquery';
@@ -28,7 +29,7 @@ import { OwlModule } from 'ngx-owl-carousel';
     FormsModule,
     OwlModule
   ],
-  providers: [GlobalService, DownloadService],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy },GlobalService, DownloadService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

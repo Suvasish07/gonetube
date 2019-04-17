@@ -54,14 +54,17 @@
 <section id="videolist" style="display:none;">
     <div class="container" style="    min-height: auto;padding-bottom: 3%;">
             <div class="row" style="    margin-top: 4%;">
-                    <div class="col-md-4 videodivcls" *ngFor="let url of this.videoDetailsArr" style="margin-bottom:10px;">
+                    <div class="col-md-4 videodivcls" *ngFor="let url of this.videoDetailsArr;let i = index" style="margin-bottom:10px;">
                         <div class="card" style="width:10em; text-align: center;margin-bottom: 5%;margin: auto;">
                               <img class="card-img-top imgcls video-btn" title="{{url.title}}" src={{url.thumbnailurl}} (click)="playVideo(url.linkurl)"  alt="Card image cap" data-toggle="modal" data-target="#myModal">
                               <div class="card-body">
-                                <a href="#" class="btn btn-primary">Download</a>
+                                <a type="button"  class="btn btn-primary" (click)="downloadVideo(url.linkurl,i)">Download</a>
+
                               </div>
                 
                             </div>
+                            <img src="assets/img/loader.gif" class="downloaderloader" alt="loader"  id="video{{i}}">
+
                         </div>
                    </div>
                    
@@ -77,16 +80,13 @@
 
   <div class="modal" id="myModal">
         <div class="modal-dialog">
-          <div class="modal-content" style="height: 380px;">
+          <div class="modal-content" style="height: 345px;">
           
-            <!-- Modal Header -->
-            <div class="modal-header gradient">
-                <h3>Playing ...</h3>
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            
+    
             <!-- Modal body -->
             <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
                     <iframe width="598" height="345" [src]=trustedDashboardUrl frameborder="0"
                     webkitallowfullscreen mozallowfullscreen allowfullscreen>
                     </iframe>            

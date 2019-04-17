@@ -14,9 +14,13 @@ export class HomeComponent implements OnInit {
   videoUrlDetails:any;
   videoDetailsArr:any=[];
   playurllink: string;
+  downloadmsg:any;
+  ishidden:boolean;
   trustedDashboardUrl: SafeResourceUrl;
   constructor(private downloadservice: DownloadService, private sanitizer: DomSanitizer) { 
     this.trustedDashboardUrl = '';
+    this.ishidden=true;
+
   }
 
   ngOnInit() {
@@ -44,17 +48,33 @@ export class HomeComponent implements OnInit {
      }
     });
   }
-  clearURL() {
-    this.videoUrl = '';
- 
-  }
 
   playVideo(url){
     let urlvalue = url;
+    this.videoUrl = '';
     let id = urlvalue.split('=');
     this.playurllink = 'https://www.youtube.com/embed/' + id[1];
     this.trustedDashboardUrl =  this.sanitizer.bypassSecurityTrustResourceUrl(this.playurllink);
   
   }
 
+
+  downloadVideo(url,i){
+    this.videoUrl = '';
+   var id="#video"+i
+    $(id).show();
+
+    this.downloadservice.downloadVideoService(url).subscribe((data) => {
+      this.downloadmsg=data;
+
+      if(this.downloadmsg.status==true){
+        
+        Swal.fire(this.downloadmsg.msg)
+        $(id).hide();
+
+
+     }
+     });
+    
+    }
 }

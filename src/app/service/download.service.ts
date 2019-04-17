@@ -12,4 +12,11 @@ export class DownloadService {
     return this.httpClient.post('http://localhost:5001/videourl',{'videourl':videourl});
   }
 
+
+  downloadVideoService(videourl){
+    console.log(videourl);
+    return this.httpClient.post('http://localhost:5001/videourltodownload',{'videourl':videourl});
+
+  }
+
 }

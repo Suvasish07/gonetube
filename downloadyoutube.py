@@ -1,4 +1,4 @@
-from flask import Flask, abort, request 
+from flask import Flask, abort, request , redirect, url_for, request
 from flask_cors import CORS, cross_origin
 import json
 import urllib.request
@@ -16,8 +16,25 @@ home = '/home/jeevan/Downloads'
 app = Flask(__name__)
 CORS(app)
 
+
+
+@app.route('/videourltodownload' , methods=['POST']) 
+def videourltodownload():
+    if not request.json:
+        abort(400)
+    videourl =request.json["videourl"]
+    SAVE_PATH = home
+    yt = pytube.YouTube(videourl)
+    stream = yt.streams.first()
+    stream.download(SAVE_PATH)
+    message="video downloaded Successfully in "+SAVE_PATH
+    return json.dumps({"msg":message,"status":True})
+
+
+
+
 @app.route('/videourl', methods=['POST']) 
-def foo():
+def videourl():
     message=''
     status=True
     path=''
@@ -35,7 +52,6 @@ def foo():
             status=True
             title=yt.title
             thumbnailurl=yt.thumbnail_url
-            linkurl=videourl
             item={"title":title,"thumbnailurl":thumbnailurl,"linkurl":videourl}
             videoInfo.append(item)
             # path=SAVE_PATH
@@ -74,7 +90,7 @@ def foo():
         listlength=round(len(videoURLList)/3)
         for link in videoURLList:
             count +=1
-            if(count==listlength):
+            if(count==4):
                 break
             yt=pytube.YouTube(link)
             sleep(1)
@@ -89,5 +105,6 @@ def foo():
 
 
 
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5001, debug=True)
+    app.run(debug=True,port=5001)

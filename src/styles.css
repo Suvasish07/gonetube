@@ -4,7 +4,7 @@
 
 body {
   min-height: 100vh;
-  background: #070E24;
+  background: rgb(26, 30, 41);
   font-family: 'Open Sans';
   color: white;
   line-height: 1.5;
@@ -217,5 +217,14 @@ main h1 > a {
 
 
 
+.swal2-title{
+  font-size: 1em !important;
+}
 
+.swal2-styled.swal2-confirm{
+  font-size: 12px !important;
+}
 
+.swal2-actions{
+  margin: 0 !important;
+}
